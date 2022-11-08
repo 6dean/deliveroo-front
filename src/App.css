@@ -63,6 +63,11 @@ img .prez-img {
   background-color: rgb(234, 235, 236);
 }
 
+.diviseur {
+  display: flex;
+  justify-content: space-evenly;
+}
+
 .categories {
   display: flex;
   flex-wrap: wrap;
@@ -139,8 +144,42 @@ img .prez-img {
   color: rgb(72, 72, 72);
 }
 
+.panier-element {
+  height: 300px;
+  width: 300px;
+  background-color: rgb(162, 193, 129);
+}
+
+.panier-element p {
+  text-align: center;
+  background-color: rgb(162, 193, 129);
+}
+
+.panier-list {
+  display: flex;
+  justify-content: space-between;
+  background-color: rgb(135, 187, 232);
+}
+
+.counter-food {
+  display: flex;
+}
+
+.marging {
+  margin-top: 40px;
+}
+
+button {
+  width: 10px;
+  height: 15px;
+}
+
 footer {
   background-color: rgb(56, 57, 57);
   height: 200px;
   color: white;
+}
+
+.undisplay {
+  display: none;
 }
