@@ -1,0 +1,137 @@
+.body {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.header-top {
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 1200px;
+}
+
+.header-img {
+  width: 150px;
+}
+
+header {
+  border-bottom: solid 1px rgb(229, 229, 229);
+}
+
+.bandeau-resto {
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 1200px;
+}
+
+.header-resto {
+  margin-top: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+h2 {
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  font-size: 30px;
+}
+
+.description-div {
+  width: 800px;
+}
+
+.description-resto {
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+    "Lucida Sans", Arial, sans-serif;
+  font-weight: 100;
+  color: rgb(116, 115, 115);
+  font-size: 20px;
+}
+
+.image-resto {
+  width: 350px;
+  border-radius: 10px;
+}
+
+img .prez-img {
+  width: 300px;
+}
+
+.background-categories {
+  background-color: rgb(234, 235, 236);
+}
+
+.categories {
+  display: flex;
+  flex-wrap: wrap;
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.category-p {
+  padding: 20px;
+  font-weight: 700;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-size: 20px;
+  background-color: rgb(234, 235, 236);
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.listing {
+  margin-right: 10px;
+  margin-bottom: 10px;
+}
+
+.prez-menu {
+  gap: 50px;
+  background-color: white;
+  border-radius: 5px;
+  padding: 10px;
+  width: 400px;
+  height: 110px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.prez-menu:hover {
+  box-shadow: -1px 0px 8px rgb(141, 141, 141);
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.limited-text {
+  display: -webkit-box;
+  overflow: hidden;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  font-size: 12px;
+  font-family: Tahoma, sans-serif;
+  color: rgb(93, 93, 93);
+}
+
+.food-img {
+  display: flex;
+  object-fit: cover;
+  width: 100px;
+  height: 100px;
+  border-radius: 4px;
+  border: solid 1px rgb(234, 233, 233);
+}
+
+.title-product {
+  font-family: Tahoma, sans-serif;
+  color: rgb(0, 0, 0);
+  font-weight: bold;
+  font-size: 13px;
+}
+
+.price {
+  font-family: tahoma, sans-serif;
+  font-size: 16px;
+  color: rgb(93, 93, 93);
+}

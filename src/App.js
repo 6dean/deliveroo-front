@@ -20,12 +20,80 @@ function App() {
     <span>En cours de chargement... </span>
   ) : (
     <>
-      <h2>{data.meta.metatags.title}</h2>
-      <p>{data.meta.metatags.titleSocial}</p>
-      <p>{data.meta.metatags.description}</p>
-      <p>{data.meta.metatags.descriptionSocial}</p>
-      <img src={data.meta.metatags.image} alt="" />
-      <p>{data.meta.restaurant.name}</p>
+      <div className="header-top">
+        <div>
+          <img
+            className="header-img"
+            src="https://i.ibb.co/bsdqBh5/logo.png"
+            alt=""
+          />
+        </div>
+      </div>
+      <header></header>
+      <body className="body">
+        <div className="bandeau-resto">
+          <div className="header-resto">
+            <div className="description-div">
+              <h2>{data.header.title}</h2>
+              <p className="description-resto">
+                {data.meta.metatags.descriptionSocial}
+              </p>
+            </div>
+
+            <div>
+              <img
+                className="image-resto"
+                src={data.meta.metatags.image}
+                alt="subway"
+              />
+            </div>
+          </div>
+        </div>
+        {data.meta.categories.map((elem) => {
+          return (
+            <>
+              <div className="background-categories">
+                <div className="category-p">{elem.name}</div>
+                <div className="categories">
+                  {data.items.map((x) => {
+                    if (Number(x.categoryId) === Number(elem.id)) {
+                      return (
+                        <div className="listing">
+                          <div className="prez-menu">
+                            <div>
+                              <p className="title-product">{x.name}</p>
+                              <p className="limited-text">{x.description}</p>
+                              <p className="price">{x.price.formatted}</p>
+                            </div>
+                            <div>
+                              {x.image === null ? (
+                                <img
+                                  src="https://img.icons8.com/emoji/256/cross-mark-button-emoji.png"
+                                  width={95}
+                                  height={95}
+                                  alt=""
+                                />
+                              ) : (
+                                <img
+                                  className="food-img"
+                                  src={x.image.url}
+                                  alt=""
+                                />
+                              )}
+                            </div>
+                          </div>
+                        </div>
+                      );
+                    } else {
+                      return null;
+                    }
+                  })}
+                </div>
+              </div>
+            </>
+          );
+        })}
+      </body>
     </>
   );
 }
