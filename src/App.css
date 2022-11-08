@@ -109,9 +109,9 @@ img .prez-img {
   overflow: hidden;
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
-  font-size: 12px;
+  font-size: 14px;
   font-family: Tahoma, sans-serif;
-  color: rgb(93, 93, 93);
+  color: rgb(72, 72, 72);
 }
 
 .food-img {
@@ -133,5 +133,5 @@ img .prez-img {
 .price {
   font-family: tahoma, sans-serif;
   font-size: 16px;
-  color: rgb(93, 93, 93);
+  color: rgb(72, 72, 72);
 }
