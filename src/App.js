@@ -34,7 +34,7 @@ function App() {
         <div className="bandeau-resto">
           <div className="header-resto">
             <div className="description-div">
-              <h2>{data.header.title}</h2>
+              <p className="header-title">{data.header.title}</p>
               <p className="description-resto">
                 {data.meta.metatags.descriptionSocial}
               </p>
@@ -93,6 +93,9 @@ function App() {
             </>
           );
         })}
+        <footer>
+          <p>DELIVEROO 2022</p>
+        </footer>
       </body>
     </>
   );
