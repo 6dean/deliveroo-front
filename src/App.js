@@ -7,7 +7,9 @@ function App() {
   const [isLoading, setIsLoading] = useState(true);
 
   const fetchData = async () => {
-    const response = await axios.get("http://localhost:3100/");
+    const response = await axios.get(
+      "https://site--backend-deliveroo--6qn7tv96v7tt.code.run/"
+    );
     setData(response.data);
     setIsLoading(false);
   };
