@@ -59,7 +59,7 @@ function App() {
         <div className="background-categories">
           <div className="diviseur">
             <div>
-              {data.meta.categories.map((elem) => {
+              {data.meta.categories.map((elem, index) => {
                 return (
                   <>
                     <div>
@@ -83,13 +83,16 @@ function App() {
                                         name: x.name,
                                         price: x.price.formatted,
                                         id: x.id,
-                                        quantity: 1,
+                                        quantity: 0,
                                         fractional: x.price.fractional,
                                       });
                                       setBasket(newBasket);
                                     } else {
                                       console.log("included");
                                     }
+
+                                    newBasket[index].quantity++;
+                                    setBasket(newBasket);
 
                                     let newTotal = total;
                                     newTotal =
