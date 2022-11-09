@@ -6,7 +6,7 @@ function App() {
   const [data, setData] = useState({});
   const [isLoading, setIsLoading] = useState(true);
   const [basket, setBasket] = useState([]);
-  const [total, setTotal] = useState(0);
+  let [total, setTotal] = useState(0);
 
   const fetchData = async () => {
     const response = await axios.get(
@@ -83,16 +83,15 @@ function App() {
                                         name: x.name,
                                         price: x.price.formatted,
                                         id: x.id,
-                                        quantity: 0,
+                                        quantity: 1,
                                         fractional: x.price.fractional,
                                       });
                                       setBasket(newBasket);
                                     } else {
-                                      console.log("included");
+                                      // const newBasket = [...basket];
+                                      // newBasket.map((x)=>{})
+                                      // setBasket(newBasket);
                                     }
-
-                                    newBasket[index].quantity++;
-                                    setBasket(newBasket);
 
                                     let newTotal = total;
                                     newTotal =
@@ -149,17 +148,20 @@ function App() {
                         <div>
                           <button
                             onClick={() => {
-                              if (basket[index].quantity <= 0) {
+                              if (basket[index].quantity === 0) {
                                 basket[index].quantity = 0;
                               } else {
                                 const newBasket = [...basket];
                                 newBasket[index].quantity--;
                                 setBasket(newBasket);
                               }
-
-                              let newTotal = total;
-                              newTotal = newTotal - elem.fractional / 100;
-                              return setTotal(newTotal);
+                              if (total <= 0) {
+                                total = 0;
+                              } else {
+                                let newTotal = total;
+                                newTotal = newTotal - elem.fractional / 100;
+                                return setTotal(newTotal);
+                              }
                             }}
                           >
                             -
@@ -214,7 +216,7 @@ function App() {
                   <div
                     className={basket.length === 0 ? "undisplay" : "display"}
                   >
-                    {total + 2.5} €
+                    {Number(total.toFixed(1)) + 2.5} €
                   </div>
                 </div>
               </div>
