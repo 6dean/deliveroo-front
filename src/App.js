@@ -21,11 +21,13 @@ function App() {
   }, []);
 
   return isLoading ? (
-    <span>En cours de chargement... </span>
+    <div className="loading">
+      <span class="loader"></span>
+    </div>
   ) : (
-    <>
+    <div className="page-element">
       <div className="header-top">
-        <div>
+        <div className="header-logo">
           <img
             className="header-img"
             src="https://i.ibb.co/bsdqBh5/logo.png"
@@ -36,22 +38,33 @@ function App() {
       <header></header>
       <body className="body">
         <div className="bandeau-resto">
+          <div>
+            <img
+              className="image-resto"
+              src={data.meta.metatags.image}
+              alt="subway"
+            />
+          </div>
           <div className="header-resto">
             <div className="description-div">
               <p className="header-title">{data.header.title}</p>
-              <p className="description-resto">
-                {data.meta.metatags.descriptionSocial}
+              <p className="header-cat">Sandwichs · Salades · Options Vegan</p>
+              <p className="header-note">
+                4.4 Très bien (500+) · 2,50 € de livraison · 10,00 € minimum
               </p>
-            </div>
-
-            <div>
-              <img
-                className="image-resto"
-                src={data.meta.metatags.image}
-                alt="subway"
-              />
+              <p className="description-resto">{data.meta.metatags.title}</p>
             </div>
           </div>
+        </div>
+        <div className="banner-sep"></div>
+        <div className="listing-cat">
+          {data.meta.categories.map((elem, i) => {
+            return (
+              <div className="style-cat" key={i}>
+                {elem.name}
+              </div>
+            );
+          })}
         </div>
 
         {/* ------MON MAPPING DE JSON------ */}
@@ -228,7 +241,7 @@ function App() {
           <p>DELIVEROO 2022</p>
         </footer>
       </body>
-    </>
+    </div>
   );
 }
 
