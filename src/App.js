@@ -1,12 +1,16 @@
 import React, { useState, useEffect } from "react";
 import "./App.css";
 import axios from "axios";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faBasketShopping } from "@fortawesome/free-solid-svg-icons";
 
 function App() {
   const [data, setData] = useState({});
   const [isLoading, setIsLoading] = useState(true);
   const [basket, setBasket] = useState([]);
   let [total, setTotal] = useState(0);
+
+  console.log(basket);
 
   const fetchData = async () => {
     const response = await axios.get(
@@ -151,89 +155,100 @@ function App() {
 
             {/* ------PANIER ELEMENT------ */}
 
-            <div className="panier-element">
-              <p>MON PANIER</p>
-              <div className="panier-list">
-                <div className="order-food">
-                  {basket.map((elem, index) => {
-                    return (
-                      <div className="counter-food">
-                        <div>
+            {basket.length === 0 ? (
+              <div className="panier-element-empty">
+                <div>
+                  <div className="elems-style-empty">
+                    <FontAwesomeIcon icon={faBasketShopping} size={"3x"} />
+                    <p>VOTRE PANIER EST VIDE</p>
+                  </div>
+                  <p className="button-buy">Finaliser la commande</p>
+                </div>
+              </div>
+            ) : (
+              <div className="panier-element">
+                <div className="panier-list">
+                  <div className="order-food">
+                    {basket.map((elem, index) => {
+                      return (
+                        <div className="counter-food">
+                          <div>
+                            <button
+                              onClick={() => {
+                                if (basket[index].quantity === 0) {
+                                  basket[index].quantity = 0;
+                                } else {
+                                  const newBasket = [...basket];
+                                  newBasket[index].quantity--;
+                                  setBasket(newBasket);
+                                }
+                                if (total <= 0) {
+                                  total = 0;
+                                } else {
+                                  let newTotal = total;
+                                  newTotal = newTotal - elem.fractional / 100;
+                                  return setTotal(newTotal);
+                                }
+                              }}
+                            >
+                              -
+                            </button>
+                          </div>
+
+                          <div>x{elem.quantity}</div>
                           <button
                             onClick={() => {
-                              if (basket[index].quantity === 0) {
-                                basket[index].quantity = 0;
-                              } else {
-                                const newBasket = [...basket];
-                                newBasket[index].quantity--;
-                                setBasket(newBasket);
-                              }
-                              if (total <= 0) {
-                                total = 0;
-                              } else {
-                                let newTotal = total;
-                                newTotal = newTotal - elem.fractional / 100;
-                                return setTotal(newTotal);
-                              }
+                              const newBasket = [...basket];
+
+                              newBasket[index].quantity++;
+                              setBasket(newBasket);
+
+                              let newTotal = total;
+                              newTotal = newTotal + elem.fractional / 100;
+                              return setTotal(newTotal);
                             }}
                           >
-                            -
+                            +
                           </button>
+                          {elem.name}
                         </div>
-
-                        <div>x{elem.quantity}</div>
-                        <button
-                          onClick={() => {
-                            const newBasket = [...basket];
-
-                            newBasket[index].quantity++;
-                            setBasket(newBasket);
-
-                            let newTotal = total;
-                            newTotal = newTotal + elem.fractional / 100;
-                            return setTotal(newTotal);
-                          }}
-                        >
-                          +
-                        </button>
-                        {elem.name}
-                      </div>
-                    );
-                  })}
-                </div>
-                <div>
-                  {basket.map((elem) => {
-                    return <div>{elem.price}</div>;
-                  })}
-                </div>
-              </div>
-              <div className="marging">
-                <div className="panier-list">
-                  <div
-                    className={basket.length === 0 ? "undisplay" : "display"}
-                  >
-                    frais de livraison
+                      );
+                    })}
                   </div>
-                  <div
-                    className={basket.length === 0 ? "undisplay" : "display"}
-                  >
-                    2.50 €
+                  <div>
+                    {basket.map((elem) => {
+                      return <div>{elem.price}</div>;
+                    })}
                   </div>
                 </div>
-                <div className="panier-list">
-                  <div
-                    className={basket.length === 0 ? "undisplay" : "display"}
-                  >
-                    Total
+                <div className="marging">
+                  <div className="panier-list">
+                    <div
+                      className={basket.length === 0 ? "undisplay" : "display"}
+                    >
+                      frais de livraison
+                    </div>
+                    <div
+                      className={basket.length === 0 ? "undisplay" : "display"}
+                    >
+                      2.50 €
+                    </div>
                   </div>
-                  <div
-                    className={basket.length === 0 ? "undisplay" : "display"}
-                  >
-                    {Number(total.toFixed(1)) + 2.5} €
+                  <div className="panier-list">
+                    <div
+                      className={basket.length === 0 ? "undisplay" : "display"}
+                    >
+                      Total
+                    </div>
+                    <div
+                      className={basket.length === 0 ? "undisplay" : "display"}
+                    >
+                      {Number(total.toFixed(1)) + 2.5} €
+                    </div>
                   </div>
                 </div>
               </div>
-            </div>
+            )}
           </div>
         </div>
         <div>OK</div>
