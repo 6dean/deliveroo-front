@@ -185,7 +185,7 @@ img .prez-img {
 }
 
 .panier-element-empty {
-  margin-top: 20px;
+  margin-top: 20px !important;
   max-height: 200px;
   min-width: 300px;
   background-color: rgb(255, 255, 255);
@@ -197,6 +197,43 @@ img .prez-img {
   position: sticky;
   top: 0;
   overflow-x: scroll;
+}
+
+.button-moreless {
+  background-color: none;
+  border: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 2px solid #22d2af;
+  border-radius: 10px;
+  font-family: "Roboto", sans-serif;
+  font-size: 19px;
+}
+
+.button-moreless-plus {
+  background-color: none;
+  border: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 2px solid #22d2af;
+  border-radius: 10px;
+  font-family: "Roboto", sans-serif;
+  font-size: 13px;
+}
+
+.button-moreless {
+  cursor: pointer;
+}
+
+.button-moreless-plus {
+  cursor: pointer;
+}
+
+.quantity {
+  padding-left: 6px;
+  padding-right: 6px;
 }
 
 .elems-style-empty {
@@ -239,6 +276,8 @@ img .prez-img {
 .panier-list {
   display: flex;
   justify-content: space-between;
+  padding: 10px;
+  box-sizing: border-box;
   background-color: rgb(135, 187, 232);
 }
 
