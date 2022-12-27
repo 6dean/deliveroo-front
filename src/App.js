@@ -10,14 +10,13 @@ function App() {
   const [basket, setBasket] = useState([]);
   let [total, setTotal] = useState(0);
 
-  console.log(basket);
-
   const fetchData = async () => {
     const response = await axios.get(
       "https://deliveroo-back-1jqn.onrender.com/"
     );
     setData(response.data);
     setIsLoading(false);
+    total < 0 && setTotal(0);
   };
 
   useEffect(() => {
@@ -169,17 +168,23 @@ function App() {
               <div className="panier-element">
                 <div className="panier-list">
                   <div className="order-food">
-                    {basket.map((elem, index) => {
+                    {basket.map((elem, i) => {
                       return (
                         <div className="counter-food">
                           <div>
                             <button
                               onClick={() => {
-                                if (basket[index].quantity === 0) {
-                                  basket[index].quantity = 0;
+                                if (basket[i].quantity - 1 < 1) {
+                                  let newBasket = [...basket];
+                                  let index = newBasket.findIndex(
+                                    (item) => item.id === elem.id
+                                  );
+
+                                  newBasket.splice(index, 1);
+                                  setBasket(newBasket);
                                 } else {
                                   const newBasket = [...basket];
-                                  newBasket[index].quantity--;
+                                  newBasket[i].quantity--;
                                   setBasket(newBasket);
                                 }
                                 if (total <= 0) {
@@ -187,6 +192,7 @@ function App() {
                                 } else {
                                   let newTotal = total;
                                   newTotal = newTotal - elem.fractional / 100;
+                                  newTotal === 0 && setBasket([]);
                                   return setTotal(newTotal);
                                 }
                               }}
@@ -200,7 +206,7 @@ function App() {
                             onClick={() => {
                               const newBasket = [...basket];
 
-                              newBasket[index].quantity++;
+                              newBasket[i].quantity++;
                               setBasket(newBasket);
 
                               let newTotal = total;
