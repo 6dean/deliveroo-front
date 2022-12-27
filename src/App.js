@@ -171,8 +171,10 @@ function App() {
                     {basket.map((elem, i) => {
                       return (
                         <div className="counter-food">
+                          {elem.name}
                           <div>
                             <button
+                              className="button-moreless"
                               onClick={() => {
                                 if (basket[i].quantity - 1 < 1) {
                                   let newBasket = [...basket];
@@ -201,8 +203,9 @@ function App() {
                             </button>
                           </div>
 
-                          <div>x{elem.quantity}</div>
+                          <div className="quantity">{elem.quantity}</div>
                           <button
+                            className="button-moreless-plus"
                             onClick={() => {
                               const newBasket = [...basket];
 
@@ -216,7 +219,6 @@ function App() {
                           >
                             +
                           </button>
-                          {elem.name}
                         </div>
                       );
                     })}
