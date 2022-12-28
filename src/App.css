@@ -115,7 +115,6 @@ img .prez-img {
   display: flex;
   flex-wrap: wrap;
   margin-left: 60px;
-  margin-right: 60px;
 }
 
 .category-p {
@@ -187,7 +186,7 @@ img .prez-img {
 .panier-element-empty {
   margin-top: 20px !important;
   max-height: 200px;
-  min-width: 300px;
+  min-width: 450px;
   background-color: rgb(255, 255, 255);
   border: 1px solid rgb(217, 216, 216);
   display: flex;
@@ -221,6 +220,7 @@ img .prez-img {
   border-radius: 10px;
   font-family: "Roboto", sans-serif;
   font-size: 13px;
+  margin-right: 3px;
 }
 
 .button-moreless {
@@ -229,6 +229,11 @@ img .prez-img {
 
 .button-moreless-plus {
   cursor: pointer;
+}
+
+.price-right {
+  text-align: end;
+  min-width: 60px;
 }
 
 .quantity {
@@ -253,16 +258,20 @@ img .prez-img {
   padding-right: 20px;
   border-radius: 4px;
   margin-top: 30px;
-  width: 220px;
+  width: 380px;
   text-align: center;
 }
 
 .panier-element {
   margin-top: 20px;
-  height: 300px;
-  min-width: 300px;
-  background-color: rgb(162, 193, 129);
+  min-width: 450px;
+  padding: 5px;
+  height: max-content;
+  font-family: "Roboto", sans-serif;
+  font-weight: 300;
+  background-color: rgb(255, 255, 255);
   margin-right: 60px;
+  border: 1px solid rgb(218, 218, 218);
   position: sticky;
   top: 0;
   overflow-x: scroll;
@@ -278,10 +287,17 @@ img .prez-img {
   justify-content: space-between;
   padding: 10px;
   box-sizing: border-box;
-  background-color: rgb(135, 187, 232);
 }
 
 .counter-food {
+  width: 430px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 8px;
+}
+
+.right-side-pa {
   display: flex;
 }
 

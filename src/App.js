@@ -10,18 +10,22 @@ function App() {
   const [basket, setBasket] = useState([]);
   let [total, setTotal] = useState(0);
 
+  console.log(basket);
+
   const fetchData = async () => {
     const response = await axios.get(
       "https://deliveroo-back-1jqn.onrender.com/"
     );
     setData(response.data);
     setIsLoading(false);
-    total < 0 && setTotal(0);
+    basket.length === 0 && setTotal(0);
   };
 
   useEffect(() => {
     fetchData();
   }, []);
+
+  const calculateTotal = Number(total) + 2.5 + 5 + 0.49;
 
   return isLoading ? (
     <div className="loading">
@@ -104,9 +108,10 @@ function App() {
                                       });
                                       setBasket(newBasket);
                                     } else {
-                                      // const newBasket = [...basket];
-                                      // newBasket.map((x)=>{})
-                                      // setBasket(newBasket);
+                                      const newBasket = [...basket];
+                                      // NOT GOOD ////////////////
+                                      newBasket[index].quantity++;
+                                      setBasket(newBasket);
                                     }
 
                                     let newTotal = total;
@@ -172,7 +177,7 @@ function App() {
                       return (
                         <div className="counter-food">
                           {elem.name}
-                          <div>
+                          <div className="right-side-pa">
                             <button
                               className="button-moreless"
                               onClick={() => {
@@ -201,35 +206,42 @@ function App() {
                             >
                               -
                             </button>
+                            <div className="quantity">{elem.quantity}</div>
+                            <button
+                              className="button-moreless-plus"
+                              onClick={() => {
+                                const newBasket = [...basket];
+
+                                newBasket[i].quantity++;
+                                setBasket(newBasket);
+
+                                let newTotal = total;
+                                newTotal = newTotal + elem.fractional / 100;
+                                return setTotal(newTotal);
+                              }}
+                            >
+                              +
+                            </button>{" "}
+                            <div className="price-right">{elem.price}</div>
                           </div>
-
-                          <div className="quantity">{elem.quantity}</div>
-                          <button
-                            className="button-moreless-plus"
-                            onClick={() => {
-                              const newBasket = [...basket];
-
-                              newBasket[i].quantity++;
-                              setBasket(newBasket);
-
-                              let newTotal = total;
-                              newTotal = newTotal + elem.fractional / 100;
-                              return setTotal(newTotal);
-                            }}
-                          >
-                            +
-                          </button>
                         </div>
                       );
                     })}
                   </div>
-                  <div>
-                    {basket.map((elem) => {
-                      return <div>{elem.price}</div>;
-                    })}
-                  </div>
                 </div>
                 <div className="marging">
+                  <div className="panier-list">
+                    <div
+                      className={basket.length === 0 ? "undisplay" : "display"}
+                    >
+                      frais additionnels
+                    </div>
+                    <div
+                      className={basket.length === 0 ? "undisplay" : "display"}
+                    >
+                      5.00 €
+                    </div>
+                  </div>
                   <div className="panier-list">
                     <div
                       className={basket.length === 0 ? "undisplay" : "display"}
@@ -246,12 +258,24 @@ function App() {
                     <div
                       className={basket.length === 0 ? "undisplay" : "display"}
                     >
+                      frais de service
+                    </div>
+                    <div
+                      className={basket.length === 0 ? "undisplay" : "display"}
+                    >
+                      0.49 €
+                    </div>
+                  </div>
+                  <div className="panier-list">
+                    <div
+                      className={basket.length === 0 ? "undisplay" : "display"}
+                    >
                       Total
                     </div>
                     <div
                       className={basket.length === 0 ? "undisplay" : "display"}
                     >
-                      {Number(total.toFixed(1)) + 2.5} €
+                      {calculateTotal.toFixed(2)} €
                     </div>
                   </div>
                 </div>
@@ -259,7 +283,6 @@ function App() {
             )}
           </div>
         </div>
-        <div>OK</div>
         <footer>
           <p>DELIVEROO 2022</p>
         </footer>
