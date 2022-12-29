@@ -23,7 +23,7 @@ function App() {
 
   useEffect(() => {
     fetchData();
-  }, []);
+  });
 
   const calculateTotal = Number(total) + 2.5 + 5 + 0.49;
 
