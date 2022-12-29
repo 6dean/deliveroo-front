@@ -23,7 +23,8 @@ function App() {
 
   useEffect(() => {
     fetchData();
-  });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   const calculateTotal = Number(total) + 2.5 + 5 + 0.49;
 
