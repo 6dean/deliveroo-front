@@ -5,7 +5,14 @@ body {
   height: 100vh;
 }
 
-.page-element {
+.header-note {
+  font-family: "Roboto", sans-serif;
+  color: grey;
+}
+
+.header-note-plus {
+  font-family: "Roboto", sans-serif;
+  color: #01717c;
 }
 
 .header-top {
@@ -262,6 +269,26 @@ img .prez-img {
   text-align: center;
 }
 
+.button-buy-full {
+  background-color: #22d2af;
+  font-family: "Roboto", sans-serif;
+  font-weight: 600;
+  color: rgb(255, 255, 255);
+  padding: 10px;
+  margin-left: 8px;
+  padding-left: 28px;
+  padding-right: 28px;
+  border-radius: 4px;
+  margin-top: 30px;
+  width: 380px;
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+.button-buy-full {
+  cursor: pointer;
+}
+
 .panier-element {
   margin-top: 20px;
   min-width: 450px;
@@ -279,7 +306,6 @@ img .prez-img {
 
 .panier-element p {
   text-align: center;
-  background-color: rgb(162, 193, 129);
 }
 
 .panier-list {
@@ -287,6 +313,16 @@ img .prez-img {
   justify-content: space-between;
   padding: 10px;
   box-sizing: border-box;
+}
+
+.panier-list-total {
+  border-top: 1px solid rgb(208, 208, 208);
+  display: flex;
+  justify-content: space-between;
+  padding: 10px;
+  margin-top: 20px;
+  box-sizing: border-box;
+  font-weight: 400;
 }
 
 .counter-food {
@@ -312,8 +348,14 @@ button {
 
 footer {
   background-color: rgb(56, 57, 57);
-  height: 200px;
+  text-align: center;
+  height: 30px;
   color: white;
+}
+
+.footer-text {
+  padding-top: 8px;
+  font-family: "Roboto", sans-serif;
 }
 
 .undisplay {

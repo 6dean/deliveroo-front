@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import "./App.css";
 import axios from "axios";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faBasketShopping } from "@fortawesome/free-solid-svg-icons";
+import { faBasketShopping, faStar } from "@fortawesome/free-solid-svg-icons";
 
 function App() {
   const [data, setData] = useState({});
@@ -57,9 +57,12 @@ function App() {
               <p className="header-title">{data.header.title}</p>
               <p className="header-cat">Sandwichs · Salades · Options Vegan</p>
               <p className="header-note">
-                4.4 Très bien (500+) · 2,50 € de livraison · 10,00 € minimum
+                <span className="header-note-plus">
+                  {" "}
+                  <FontAwesomeIcon icon={faStar} size={"sm"} /> 4.4 Très bien
+                </span>{" "}
+                (500+) · 2,50 € de livraison · 10,00 € minimum
               </p>
-              <p className="description-resto">{data.meta.metatags.title}</p>
             </div>
           </div>
         </div>
@@ -266,25 +269,35 @@ function App() {
                       0.49 €
                     </div>
                   </div>
-                  <div className="panier-list">
+                  <div className="panier-list-total">
                     <div
                       className={basket.length === 0 ? "undisplay" : "display"}
                     >
-                      Total
+                      <p>Total</p>
                     </div>
                     <div
                       className={basket.length === 0 ? "undisplay" : "display"}
                     >
-                      {calculateTotal.toFixed(2)} €
+                      <p>{calculateTotal.toFixed(2)} €</p>
                     </div>
                   </div>
                 </div>
+                <p
+                  className="button-buy-full"
+                  onClick={() => {
+                    setBasket([]);
+                    setTotal(0);
+                    alert("Votre commande est en cuisine ! 🍳");
+                  }}
+                >
+                  Finaliser la commande
+                </p>
               </div>
             )}
           </div>
         </div>
         <footer>
-          <p>DELIVEROO 2022</p>
+          <p className="footer-text">DELIVEROO REPLICA 2022 - Rockdean </p>
         </footer>
       </body>
     </div>
