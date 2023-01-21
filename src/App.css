@@ -5,6 +5,10 @@ body {
   height: 100vh;
 }
 
+.empty_basket {
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
 .header-note {
   font-family: "Roboto", sans-serif;
   color: grey;

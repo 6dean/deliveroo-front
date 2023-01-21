@@ -86,8 +86,10 @@ function App() {
               {data.meta.categories.map((elem, index) => {
                 return (
                   <>
-                    <div>
-                      <div className="category-p">{elem.name}</div>
+                    <div id="div">
+                      <div className="category-p" key={index}>
+                        {elem.name}
+                      </div>
                       <div className="categories">
                         {data.items.map((x) => {
                           if (Number(x.categoryId) === Number(elem.id)) {
@@ -168,7 +170,7 @@ function App() {
                 <div>
                   <div className="elems-style-empty">
                     <FontAwesomeIcon icon={faBasketShopping} size={"3x"} />
-                    <p>VOTRE PANIER EST VIDE</p>
+                    <p className="empty_basket">VOTRE PANIER EST VIDE</p>
                   </div>
                   <p className="button-buy">Finaliser la commande</p>
                 </div>
